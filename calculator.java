@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class calculator {
+public class Calculator {
     // Function for addition
     public static double add(double a, double b) {
         return a + b;
@@ -10,6 +10,7 @@ public class calculator {
     public static double subtract(double a, double b) {
         return a - b;
     }
+
     // Function for multiplication
     public static double multiply(double a, double b) {
         return a * b;
@@ -24,8 +25,19 @@ public class calculator {
         return a / b;
     }
 
+    // Function for modulus
+    public static double modulus(double a, double b) {
+        if (b == 0) {
+            System.out.println("Error: Division by zero is not allowed.");
+            return Double.NaN;
+        }
+        return a % b;
+    }
 
-
+    // Function for exponentiation
+    public static double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,8 +48,10 @@ public class calculator {
         System.out.println("2. Subtraction (-)");
         System.out.println("3. Multiplication (*)");
         System.out.println("4. Division (/)");
+        System.out.println("5. Modulus (%)");
+        System.out.println("6. Power (^)");
+        System.out.print("Enter your choice (1-6): ");
 
-        
         int choice = scanner.nextInt();
 
         if (choice >= 1 && choice <= 6) {
@@ -58,22 +72,31 @@ public class calculator {
                     result = subtract(num1, num2);
                     System.out.println("Result: " + num1 + " - " + num2 + " = " + result);
                     break;
-            
-            case 3:
-            result = add(num1, num2);
-            System.out.println("Result: " + num1 + " * " + num2 + " = " + result);
-            break;
-        case 4:
-            result = divide(num1, num2);
-            if (!Double.isNaN(result)) {
-                System.out.println("Result: " + num1 + " / " + num2 + " = " + result);
+                case 3:
+                    result = multiply(num1, num2);
+                    System.out.println("Result: " + num1 + " * " + num2 + " = " + result);
+                    break;
+                case 4:
+                    result = divide(num1, num2);
+                    if (!Double.isNaN(result)) {
+                        System.out.println("Result: " + num1 + " / " + num2 + " = " + result);
+                    }
+                    break;
+                case 5:
+                    result = modulus(num1, num2);
+                    if (!Double.isNaN(result)) {
+                        System.out.println("Result: " + num1 + " % " + num2 + " = " + result);
+                    }
+                    break;
+                case 6:
+                    result = power(num1, num2);
+                    System.out.println("Result: " + num1 + " ^ " + num2 + " = " + result);
+                    break;
             }
-        }
-
         } else {
             System.out.println("Invalid choice. Please select a number between 1 and 6.");
         }
 
         scanner.close();
-    }
+}
 }
