@@ -11,7 +11,7 @@ public class calculator {
         return a - b;
     }
     // Function for multiplication
-    public static double add(double a, double b) {
+    public static double multiply(double a, double b) {
         return a * b;
     }
 
